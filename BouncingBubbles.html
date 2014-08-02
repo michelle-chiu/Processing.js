@@ -1,0 +1,71 @@
+<html>
+        <head>
+                <script src="processing-1.4.1.js"></script>
+                <script type="text/processing" data-processing-target="mycanvas">
+                        //creates a new ball
+                                                var b1 = new Ball();
+                                                var b2 = new Ball();
+                                                var b3 = new Ball();
+                                                var b4 = new Ball();
+                                                
+                                                void setup() {
+                                                        size(640,680);
+                        }
+
+                        void draw(){
+                                                        background(160, 200, 196);
+                                                        b1.drawMyself();
+                                                        b2.drawMyself();
+                                                        b3.drawMyself();
+                                                        b4.drawMyself();
+                        }
+                                                
+                                                class Ball {
+                                                        var x;
+                                                        var y;
+                                                        var speedX;
+                                                        var speedY;
+                                                        var red;
+                                                        var green;
+                                                        var blue;
+                                                        var diameter;
+                                                        
+                                                        //constructor
+                                                        Ball() {
+                                                                x = random(width);
+                                                                y = random(height);
+                                                                speedX = random(-3,3);
+                                                                speedY = random(-3,3);
+                                                                red = random(0,255);
+                                                                green = random(0,255);
+                                                                blue = random(0,255);
+                                                                diameter = random(1,200);
+                                                        }
+                                                        
+                                                        //def functionName() 
+                                                        void drawMyself() {
+                                                                //ball
+                                                                fill(red, green, blue, 90);
+                                                                ellipse(x, y, diameter, diameter);
+                                                                
+                                                                //bounce code
+                                                                if (x < 0 || x > width) {
+                                                                        speedX = -speedX;
+                                                                }
+                                                                
+                                                                if (y < 0 || y > height) {
+                                                                        speedY = -speedY;
+                                                                }
+                                                                
+                                                                
+                                                                //move code
+                                                                x += speedX;
+                                                                y += speedY;
+                                                        }
+                                                }
+                </script>
+        </head>
+        <body>
+                <canvas id="mycanvas"></canvas>
+        </body>
+</html>

@@ -1,0 +1,22 @@
+<html>
+        <head>
+                <script src="processing-1.4.1.js"></script>
+                <script type="text/processing" data-processing-target="mycanvas">
+                                                var x = 100;
+                        // Is called once, automatically, when the webpage opens.
+                                                void setup()
+                        {
+                                                        size(640,480); // Sets width and height of canvas
+                        }
+                                                //  Draw loop.
+                        void draw(){  
+                                                        background(180,180,255);
+                                                        ellipse(x,200,50,60);
+                                                        x += 1;
+                        }
+                </script>
+        </head>
+        <body>
+                <canvas id="mycanvas"></canvas>
+        </body>
+</html>

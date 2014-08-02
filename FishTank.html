@@ -1,0 +1,70 @@
+<html>
+        <head>
+                <script src="processing-1.4.1.js"></script>
+                <script type="text/processing" data-processing-target="mycanvas">
+                        var fishies;
+						var n; //number of fish
+						void setup()
+                        {
+							size(1400,750); //sets canvas size(1400,750)
+							fishies = []; //list of how many fish there are
+							n = 16;      //number of fish
+							for (var i = 0; i < n; i += 1) { // adding fish to list
+								fishies.push(new Fish());
+							}
+                        }
+
+                        void draw(){ 
+							background(160, 200, 196); //background color
+							
+							for (var i = 0; i < n; i += 1) { //drawing the fish
+								fishies[i].drawFish();
+								
+							}
+                        }
+						
+						class Fish {
+							var x; //x-position of fish
+							var y; //y-position of fish
+							var facing; //direction fish is facing
+							var red;
+							var green;
+							var blue;
+							var size;
+							
+							Fish() {
+								x = random(width); //random x-position
+								y = random(height); //random y-position
+								facing = random(-1,1);
+								red = random(0,255);
+								green = random(0,255);
+								blue = random(0,255);
+								size = random(0.5,3);
+
+							}
+							
+							void drawFish() {
+								fill(red, green, blue);
+								if (facing > 0) { //if moving to right, 
+									triangle(x+50*size, y+20*size, x-30*size, y-40*size, x-40*size, y+30*size); //draw facing to the right
+								}
+								else {           //if moving to left,
+									triangle(x-50*size, y+20*size, x+30*size, y-40*size, x+40*size, y+30*size); //draw facing to rhe left
+								}
+								
+								fill(blue, red, green);
+								ellipse(x, y, 15*size, 15*size); //eye of the fish
+								x += facing; //setting x to facing + 1
+								if (x > width || x < 0) { //if x is greater than right parameter of screen or x is less than left parameter of screen,
+									facing = -1 * facing; //multiply direction fish facing by -1 --> turn around
+								}
+								fill
+								
+							}
+						}
+                </script>
+        </head>
+        <body>
+                <canvas id="mycanvas"></canvas>
+        </body>
+</html>

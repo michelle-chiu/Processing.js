@@ -1,0 +1,56 @@
+<html>
+        <head>
+                <script src="processing-1.4.1.js"></script>
+                <script type="text/processing" data-processing-target="mycanvas">
+                        var fishies;
+                                                var n;
+                                                void setup()
+                        {
+                                                        size(800,800);
+                                                        fishies = [];
+                                                        n = 96;
+                                                        for (var i = 0; i < n; i += 1) {
+                                                                fishies.push(new Fish());
+                                                        }
+                        }
+
+                        void draw(){
+                                                        background(0, 0, 196);
+                                                        
+                                                        for (var i = 0; i < n; i += 1) {
+                                                                fishies[i].drawFish();
+                                                                
+                                                        }
+                        }
+                                                
+                                                class Fish {
+                                                        var x;
+                                                        var y;
+                                                        var facing;
+                                                        
+                                                        Fish() {
+                                                                x = random(width);
+                                                                y = random(height);
+                                                                facing = random(-1,1);
+                                                        }
+                                                        
+                                                        void drawFish() {
+                                                                if (facing > 0) {
+                                                                        triangle(x+50, y+20, x-30, y-40, x-40, y+30);
+                                                                }
+                                                                else {
+                                                                        triangle(x-50, y+20, x+30, y-40, x+40, y+30);
+                                                                }
+                                                                ellipse(x, y, 15, 15);
+                                                                x += facing;
+                                                                if (x > width || x < 0) {
+                                                                        facing = -1 * facing;
+                                                                }
+                                                        }
+                                                }
+                </script>
+        </head>
+        <body>
+                <canvas id="mycanvas"></canvas>
+        </body>
+</html>
